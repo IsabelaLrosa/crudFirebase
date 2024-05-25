@@ -1,0 +1,227 @@
+<!--/**
+ * Copyright 2023 Prof. Ms. Ricardo Leme All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap 5 CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Boostrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/fatecitu.png" />
+  <link rel="stylesheet" href="css/estilo.css" />
+  <title>Menu Inicial</title>
+</head>
+
+<body onload="verificaLogado();obtemClientes()">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Fatec Gym</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home.html"><i class="bi bi-house"></i> Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="clientes.html"><i class="bi bi-person-vcard"></i> Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="planos.html"><i class="bi bi-award"></i> Planos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="relatorio-clientes.html"><i class="bi bi-journal-check"></i> Relatórios</a>
+          </li>
+        </ul>
+      </div>
+      <div class="text-right">
+        <ul class="navbar-nav ms-auto flex-nowrap">
+          <div id="imagemUsuario"></div>
+          <li class="nav-item">
+            <button class="btn btn-sm btn-block btn-danger" onclick="logoutFirebase()">
+              <i class="bi bi-box-arrow-in-right"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid p-2 bg-dark text-light text-center">
+    <h1>Cadastro de Clientes</h1>
+  </div>
+  <div id="mensagemAlerta"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card-header">
+          <h5 class="card-title text-primary">
+            Clientes
+          </h5>
+        </div>
+        <div class="card shadow-lg rounded">
+          <div class="card-body">
+
+            <!-- Formulário -->
+            <form class="form-horizontal" id="formCliente">
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="id">Código</label>
+                <div class="col-md-4">
+                  <input id="id" name="id" type="text" placeholder="Gerado automaticamente"
+                    class="form-control input-md" readonly>
+
+                </div>
+              </div>
+
+              <!--Tex input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <div class="col-md-12">
+                  <input id="nome" autofocus autocomplete="name" name="nome" type="text"
+                    placeholder="Informe o nome completo" class="form-control input-md" required="">
+                  <!-- autofocus = cursor piscando automático no nome-->
+                  <!-- autocomplete = lembra de todos os nomes que você ja colocou no servidor-->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="email">E-mail</label>
+                <!-- col md 4 = limita o tamanho do "título"-->
+                <div class="col-md-8">
+                  <!-- col md 6 = limita o tamanho da caixa para respostas-->
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="Informe o seu e-mail"
+                    class="form-control input-md" required="">
+                  <!-- autocomplete = lembra de todos os email que você já colocou no servidor-->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="peso">Peso</label>
+                <div class="col-md-3">
+                  <input id="peso" name="peso" type="number" min="0" max="300" placeholder="Peso em KG"
+                    class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="altura">Altura</label>
+                <div class="col-md-4">
+                  <input id="altura" name="altura" type="number" min="0" max="250" placeholder="Altura em cm "
+                    class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="nascimento">Nascimento</label>
+                <div class="col-md-4">
+                  <input id="nascimento" name="nascimento" type="date" placeholder="" class="form-control input-md"
+                    required="">
+                </div>
+              </div>
+
+              <!-- Multiple Radios (inline) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="sexo">Sexo</label>
+                <div class="col-md-4">
+                  <label class="radio-inline" for="sexo-0">
+                    <input type="radio" name="sexo" id="sexo-0" value="Masculino" checked="checked">
+                    Masculino
+                  </label>
+                  <label class="radio-inline" for="sexo-1">
+                    <input type="radio" name="sexo" id="sexo-1" value="Feminino">
+                    Feminino
+                  </label>
+                </div>
+              </div>
+
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="salvar"></label>
+                <div class="col-md-8">
+                  <button type="submit" id="salvar" name="salvar" class="btn btn-success">
+                    Salvar
+                  </button>
+                  <button type="reset" id="limpar" name="limpar" class="btn btn-warning">
+                    Limpar
+                  </button>
+                </div>
+              </div>
+
+              </fieldset>
+            </form>
+          </div>
+          <div class="card-footer">
+            Campos com * são obrigatórios
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+
+        <button class="btn btn-info" type="button" disabled id="carregandoDados">
+          <span class="spinner-border spinner-border-sm" role="status"></span>
+          Carregando os dados...
+        </button>
+
+        <!-- campo de filtro-->
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" id="filtroCliente" placeholder="🔍 Filtrar..."
+            oninput="filtrarTabela('filtroCliente','tabelaDados')">
+        </div>
+
+        <!-- tabela-->
+        <table class="table table-bordered table-striped" id="tabelaDados">
+          <!-- Conteúdo obtido no firebase que será inserido aqui -->
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer class="bd-footer py-1 bg-primary text-light fixed-bottom">
+    <div class="container py-1">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Fatec Gym &copy; - Todos os direitos reservados</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Carregando os scripts do Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-storage-compat.js"></script>
+
+  <!-- Carregamento dos scripts do projeto-->
+  <script src="js/firebase/firebase.js"></script>
+  <script src="js/firebase/authentication.js"></script>
+  <script src="js/util/alerta.js"></script>
+  <script src="js/firebase/clientes.js"></script>
+</body>
+
+</html>
