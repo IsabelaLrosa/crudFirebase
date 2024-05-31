@@ -90,8 +90,8 @@ async function obtemClientes() {
             novaLinha.insertCell().textContent = item.val().peso
             novaLinha.insertCell().textContent = item.val().altura
             novaLinha.insertCell().textContent = item.val().sexo
-            novaLinha.insertCell().innerHTML = `<button class='btn btn-sm btn-danger' title='Apaga o cliente selecionado' onclick=remover('${db}', '${id}')> <i class='bi bi-trash'></i></button>
-                                              <button class='btn btn-sm btn-warning' title='Edita o cliente selecionado'onclick=carregaDadosAlteracao('${db}','${id}')> <i class='bi bi-pencil-square'></i></button>`
+            novaLinha.insertCell().innerHTML = `<button class='btn btn-sm btn-danger' title='Apaga o cliente selecionado' onclick=remover('${db}','${id}')> <i class='bi bi-trash'></i> </button>
+            <button class='btn btn-sm btn-warning' title='Edita o cliente selecionado' onclick=carregaDadosAlteracao('${db}','${id}')> <i class='bi bi-pencil-square'></i> </button>`
         })
     })
     //ocultamos o botão carregando...
@@ -99,17 +99,18 @@ async function obtemClientes() {
 }
 
 async function remover(db, id) {
-    if (window.confirm('⚠️ Confirma a exclusão do cliente?')) {
-        let dadosExclusao = await firebase.database().ref().child(db + '/' + id)
-        dadosExclusao.remove()
-            .then(() => {
-                alerta('✅ Cliente removido com sucesso!', 'success')
-            })
-            .catch(error => {
-                alerta(`❌ Falha ao apagar o cliente: ${error.message}`)
-            })
+    if (window.confirm('⚠ Confirma a exclusão do cliente?')) {
+      let dadosExclusao = await firebase.database().ref().child(db + '/' + id)
+      dadosExclusao.remove()
+        .then(() => {
+          alerta('✅Cliente removido com sucesso!', 'success')
+        })
+        .catch(error => {
+          alerta(`❌Falha ao apagar o cliente: ${error.message}`)
+        })
     }
-}
+  } 
+
 async function alterar(event, collection, dados) {
     event.preventDefault()
     return await firebase.database().ref().child(collection + '/' + dados.id).update(dados)

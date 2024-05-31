@@ -1,6 +1,6 @@
 ## Fatec Itu - Dom Amaury Castanho 📚
 
-# Aula de aprimoramento 
+# Segundo Trabalho de Programação para a Internet
 >> Matéria: Programação para a internet 
 >> Professor: Ricardo Roberto Leme 
 
