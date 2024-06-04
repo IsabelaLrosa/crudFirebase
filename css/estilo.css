@@ -5,7 +5,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #f8d64c, #fedcd2);
+    background: linear-gradient(to right, #F6B8F9, #D2b8F9, #B8C2F9, #B8E6F9, #B8F9E9, #B8F9C5);
 }
 
 /* usar sempre uma classe no css para não "bugar" o bootstrap*/
+
+.fundo-colorido{
+    background: linear-gradient(to right, #F6B8F9, #D2b8F9, #B8C2F9, #B8E6F9, #B8F9E9, #B8F9C5);
+}
+
+.cabecalho-rodape{
+    background: #6E87F5;
+}
+
+.fundo-titulo{
+    background: linear-gradient(to left, #F6B8F9, #D2b8F9, #B8C2F9, #B8E6F9, #B8F9E9, #B8F9C5);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.container-center {
+    align-items: center;
+}
+
+.texto {
+    padding-left: 30px;
+}
+
+.rodapé {
+    height:50px;
+    padding-left: 30px;
+}
