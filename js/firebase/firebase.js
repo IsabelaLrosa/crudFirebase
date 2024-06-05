@@ -23,6 +23,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyCGr6fxbgVDV64bxt2rX731KeC9J88jSws",
   authDomain: "crud-firebase-isabela.firebaseapp.com",
+  databaseURL: "https://crud-firebase-isabela-default-rtdb.firebaseio.com",
   projectId: "crud-firebase-isabela",
   storageBucket: "crud-firebase-isabela.appspot.com",
   messagingSenderId: "121026807172",
