@@ -29,7 +29,7 @@
   <title>Menu Inicial</title>
 </head>
 
-<body onload="verificaLogado();obtemCliente()">
+<body onload="verificaLogado();obtemClientes()">
   <nav class="navbar navbar-expand-lg navbar-light cabecalho-rodape">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Magia Natural</a>
@@ -181,7 +181,7 @@
               <!-- Select Basic -->
               <label class="col-md-12 control-label" for="qualcristal">Com qual cristal você mais gostou?
               </label>
-              <select id="qualcristal" name="qualcristal" required>
+              <select id="qualcristal" name="qualcristal" required class="form-control">
                 <option value="" selected>Selecione um tipo...</option>
                 <option value="agata">Ágata</option>
                 <option value="aguamarinha">Água Marinha</option>
@@ -243,24 +243,21 @@
                 <label class="col-md-12 control-label" for="criticas">Deixe aqui suas críticas, elogios ou
                   sugestões</label>
                 <div class="col-md-12">
-                  <input id="criticas" name="criticas" type="text" placeholder="Coloque seu comentário aqui"
-                    class="form-control input-md" required="">
+                  <textarea id="criticas" name="criticas" placeholder="Coloque seu comentário aqui" rows="4"
+                    class="form-control input-md"></textarea>
                 </div>
               </div>
 
-
-            </form>
-
-            <!-- Button (Double) -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="salvar"></label>
-              <div class="col-md-8">
-                <button type="submit" id="salvar" name="salvar" class="btn btn-success">Salvar</button>
-                <button type="reset" id="limpar" name="limpar" class="btn btn-warning">Limpar</button>
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="salvar"></label>
+                <div class="col-md-8">
+                  <button type="submit" id="salvar" name="salvar" class="btn btn-success">Salvar</button>
+                  <button type="reset" id="limpar" name="limpar" class="btn btn-warning">Limpar</button>
+                </div>
               </div>
-            </div>
 
-            </fieldset>
+              </fieldset>
             </form>
           </div>
           <div class="card-footer">
@@ -288,7 +285,7 @@
   </div>
 
   <body class="fundo-colorido"></body>
-  
+
   <footer class="bd-footer py-1 text-dark fixed-bottom cabecalho-rodape rodapé">
     <div class="col-md-12">
       <p> Magia Natural &copy; - Todos os direitos reservados</p>
