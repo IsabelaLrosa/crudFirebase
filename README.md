@@ -11,6 +11,5 @@ HTML, CSS, LocalStorage e Java Script
 
 # Contato ✉️
 ISABELA LEMES ROSA [IsabelaLrosa](isabelalrosa@outlook.com)
-<<<<<<< HEAD
 THAIS VALE FERRAZ [Panda136](thais.cotrim@hotmail.com)
 
